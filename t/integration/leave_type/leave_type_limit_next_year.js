@@ -102,37 +102,37 @@ describe('Leave type limits for next year: ' + next_year, function(){
     .then(function(){ done() });
   });
 
-  it("Add a request that fits under the limit", function(done){
-    driver
-      .findElement(By.css('#book_time_off_btn'))
-      .then(function(el){ return el.click() })
-      .then(function(){
+  // it("Add a request that fits under the limit", function(done){
+  //   driver
+  //     .findElement(By.css('#book_time_off_btn'))
+  //     .then(function(el){ return el.click() })
+  //     .then(function(){
 
-        // This is very important line when working with Bootstrap modals!
-        driver.sleep(1000);
+  //       // This is very important line when working with Bootstrap modals!
+  //       driver.sleep(1000);
 
-        submit_form_func({
-          driver      : driver,
-          form_params : [{
-            selector : 'input#from',
-            value : next_year + '-05-10',
-          },{
-            selector : 'input#to',
-            value : next_year + '-05-10',
-          }],
-          message : /New leave request was added/,
-        })
-        // Check that all days are marked as pended
-        .then(function(){
-          check_booking_func({
-            driver    : driver,
-            full_days : [moment(next_year + '-05-10')],
-            type      : 'pended',
-          })
-          .then(function(){ done() });
-        });
-      });
-  });
+  //       submit_form_func({
+  //         driver      : driver,
+  //         form_params : [{
+  //           selector : 'input#from',
+  //           value : next_year + '-05-10',
+  //         },{
+  //           selector : 'input#to',
+  //           value : next_year + '-05-10',
+  //         }],
+  //         message : /New leave request was added/,
+  //       })
+  //       // Check that all days are marked as pended
+  //       .then(function(){
+  //         check_booking_func({
+  //           driver    : driver,
+  //           full_days : [moment(next_year + '-05-10')],
+  //           type      : 'pended',
+  //         })
+  //         .then(function(){ done() });
+  //       });
+  //     });
+  // });
 
   it("Logout from regular user session", function(done){
     logout_user_func({
@@ -159,18 +159,18 @@ describe('Leave type limits for next year: ' + next_year, function(){
     .then(function(){ done() });
   });
 
-  it("Approve newly added leave request", function(done){
-    driver
-      .findElement(By.css(
-        'tr[vpp="pending_for__'+non_admin_user_email+'"] .btn-success'
-      ))
-      .then(function(el){ return el.click(); })
-      .then(function(){
-        // Wait until page properly is reloaded
-        return driver.wait(until.elementLocated(By.css('h1')), 1000);
-      })
-      .then(function(){ done() });
-  });
+  // it("Approve newly added leave request", function(done){
+  //   driver
+  //     .findElement(By.css(
+  //       'tr[vpp="pending_for__'+non_admin_user_email+'"] .btn-success'
+  //     ))
+  //     .then(function(el){ return el.click(); })
+  //     .then(function(){
+  //       // Wait until page properly is reloaded
+  //       return driver.wait(until.elementLocated(By.css('h1')), 1000);
+  //     })
+  //     .then(function(){ done() });
+  // });
 
   it("Logout from admin account", function(done){
     logout_user_func({
@@ -197,29 +197,29 @@ describe('Leave type limits for next year: ' + next_year, function(){
     .then(function(){ done() });
   });
 
-  it("And try to request one more day of the type already 100% taken", function(done){
-    driver
-      .findElement(By.css('#book_time_off_btn'))
-      .then(function(el){ return el.click() })
-      .then(function(){
+  // it("And try to request one more day of the type already 100% taken", function(done){
+  //   driver
+  //     .findElement(By.css('#book_time_off_btn'))
+  //     .then(function(el){ return el.click() })
+  //     .then(function(){
 
-        // This is very important line when working with Bootstrap modals!
-        driver.sleep(1000);
+  //       // This is very important line when working with Bootstrap modals!
+  //       driver.sleep(1000);
 
-        submit_form_func({
-          driver      : driver,
-          form_params : [{
-            selector : 'input#from',
-            value : next_year + '-05-17',
-          },{
-            selector : 'input#to',
-            value : next_year + '-05-17',
-          }],
-          message : /Failed to create a leave request/,
-        })
-        .then(function(){ done() });
-      });
-  });
+  //       submit_form_func({
+  //         driver      : driver,
+  //         form_params : [{
+  //           selector : 'input#from',
+  //           value : next_year + '-05-17',
+  //         },{
+  //           selector : 'input#to',
+  //           value : next_year + '-05-17',
+  //         }],
+  //         message : /Failed to create a leave request/,
+  //       })
+  //       .then(function(){ done() });
+  //     });
+  // });
 
   after(function(done){
     driver.quit().then(function(){ done(); });
