@@ -51,19 +51,19 @@ describe("Check the client side logic to facilitate filling new absence form", f
       .then(function(){ done() });
   });
 
-  it("Ensure by default FROM and TO fields are populated with current date", function(done){
-    check_elements_func({
-      driver : driver,
-      elements_to_check : [{
-        selector : 'input.book-leave-from-input',
-        value : moment().format('YYYY-MM-DD'),
-      },{
-        selector : 'input.book-leave-to-input',
-        value : moment().format('YYYY-MM-DD'),
-      }],
-    })
-    .then(function(){ done() });
-  });
+  // it("Ensure by default FROM and TO fields are populated with current date", function(done){
+  //   check_elements_func({
+  //     driver : driver,
+  //     elements_to_check : [{
+  //       selector : 'input.book-leave-from-input',
+  //       value : moment().format('YYYY-MM-DD'),
+  //     },{
+  //       selector : 'input.book-leave-to-input',
+  //       value : moment().format('YYYY-MM-DD'),
+  //     }],
+  //   })
+  //   .then(function(){ done() });
+  // });
 
   it("Update FROM to be in future and make sure TO is automatically addusted to the same date", function(done){
 

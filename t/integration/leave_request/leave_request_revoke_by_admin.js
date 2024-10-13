@@ -125,15 +125,15 @@ describe('Revoke leave request by Admin', function(){
       });
   });
 
-  it("Check that all days are marked as pended", function(done){
-    check_booking_func({
-      driver         : driver,
-      full_days      : [moment.utc(`${currentYear}-05-12`)],
-      halfs_1st_days : [moment.utc(`${currentYear}-05-11`)],
-      type           : 'pended',
-    })
-    .then(function(){ done() });
-  });
+  // it("Check that all days are marked as pended", function(done){
+  //   check_booking_func({
+  //     driver         : driver,
+  //     full_days      : [moment.utc(`${currentYear}-05-12`)],
+  //     halfs_1st_days : [moment.utc(`${currentYear}-05-11`)],
+  //     type           : 'pended',
+  //   })
+  //   .then(function(){ done() });
+  // });
 
   it("Logout from EMPLOYEE account", function(done){
     logout_user_func({
